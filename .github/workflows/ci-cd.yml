@@ -34,16 +34,16 @@ jobs:
       run: doxygen Doxyfile
     - name: 🔍 Verify main page
       run: |
-        echo "Проверка главной страницы..."
+        echo "Checking main page..."
         if [ -f "docs/html/index.html" ]; then
-          echo "✅ Документация сгенерирована"
-          if grep -q "Neural Network Project" docs/html/index.html; then
-            echo "✅ README.md используется как главная страница"
-          else
-            echo "⚠️  README.md может не использоваться как главная"
-          fi
+            echo "✅ Documentation generated"
+            if grep -q "Neural Network Project" docs/html/index.html; then
+                echo "✅ README.md is used as main page"
+            else
+                echo "⚠️ README.md may not be used as main page"
+            fi
         else
-          echo "❌ Документация не сгенерирована"
+            echo "❌ Documentation not generated"
         fi
     - name: 📦 Upload docs artifact
       uses: actions/upload-artifact@v4
