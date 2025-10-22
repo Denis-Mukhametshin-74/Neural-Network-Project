@@ -1,0 +1,88 @@
+name: Neural Network CI/CD
+
+on:
+  push:
+    branches: [master, feature/us-5]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    name: 🧪 Run Tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+    - name: 🐍 Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: 📦 Install dependencies
+      run: pip install -r requirements.txt
+    - name: 🧪 Run basic tests
+      run: python -c "from src.neural_network import NeuralNetwork; from src.data_loader import DataLoader; import numpy as np; print('Testing Neural Network...'); nn = NeuralNetwork(784, 128, 10); X = np.random.randn(5, 784); y = np.eye(10)[:5]; output = nn.forward(X); print('✅ Forward OK'); loss = nn.compute_loss(y, output); print('✅ Loss OK'); accuracy = nn.compute_accuracy(X, y); print('✅ Accuracy OK'); print('🎉 All basic tests passed!')"
+
+  docs:
+    name: 📚 Generate Documentation
+    runs-on: ubuntu-latest
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+    - name: 📖 Install Doxygen
+      run: sudo apt-get install -y doxygen graphviz
+    - name: 📖 Generate docs
+      run: doxygen Doxyfile
+    - name: 🔍 Verify main page
+      run: |
+        echo "Проверка главной страницы..."
+        if [ -f "docs/html/index.html" ]; then
+          echo "✅ Документация сгенерирована"
+          if grep -q "Neural Network Project" docs/html/index.html; then
+            echo "✅ README.md используется как главная страница"
+          else
+            echo "⚠️  README.md может не использоваться как главная"
+          fi
+        else
+          echo "❌ Документация не сгенерирована"
+        fi
+    - name: 📦 Upload docs artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: doxygen-docs
+        path: docs/html/
+
+  deploy:
+    name: 🚀 Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: [test, docs]
+    if: github.ref == 'refs/heads/master'
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v4
+
+    - name: 🏗️ Setup Pages
+      uses: actions/configure-pages@v4
+
+    - name: 📖 Install Doxygen
+      run: sudo apt-get install -y doxygen graphviz
+
+    - name: 📖 Generate docs
+      run: doxygen Doxyfile
+
+    - name: 📦 Upload to Pages
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: docs/html/
+
+    - name: 🚀 Deploy
+      id: deployment
+      uses: actions/deploy-pages@v4

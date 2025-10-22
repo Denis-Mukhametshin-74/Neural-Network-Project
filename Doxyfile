@@ -12,6 +12,10 @@ DOXYFILE_ENCODING      = UTF-8
 # Язык
 OUTPUT_LANGUAGE        = Russian
 
+# Главная страница из README.md
+USE_MDFILE_AS_MAINPAGE = README.md
+MARKDOWN_SUPPORT = YES
+
 # Что генерировать
 GENERATE_LATEX         = NO
 GENERATE_HTML          = YES
@@ -19,8 +23,8 @@ GENERATE_TREEVIEW      = YES
 FULL_PATH_NAMES        = NO
 
 # Поиск файлов
-INPUT                  = src
-FILE_PATTERNS          = *.py
+INPUT                  = src README.md
+FILE_PATTERNS          = *.py *.md
 RECURSIVE              = YES
 
 # Документирование
