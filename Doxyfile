@@ -1,12 +1,45 @@
-PROJECT_NAME = "Neural Network Project"
-PROJECT_NUMBER = 1.0
-PROJECT_BRIEF = "SCRUM проект по разработке нейросети на Python"
-OUTPUT_DIRECTORY = docs
-GENERATE_LATEX = NO
-GENERATE_HTML = YES
-INPUT = src README.md
-FILE_PATTERNS = *.py *.md
-RECURSIVE = YES
-EXTRACT_ALL = YES
-SOURCE_BROWSER = YES
-HTML_OUTPUT = html
+# Базовые настройки
+PROJECT_NAME           = "Neural Network Project"
+PROJECT_NUMBER         = 1.0
+PROJECT_BRIEF          = "SCRUM проект по разработке нейросети на Python"
+OUTPUT_DIRECTORY       = docs
+CREATE_SUBDIRS         = NO
+
+# Кодировка файлов
+INPUT_ENCODING         = UTF-8
+DOXYFILE_ENCODING      = UTF-8
+
+# Язык
+OUTPUT_LANGUAGE        = Russian
+
+# Что генерировать
+GENERATE_LATEX         = NO
+GENERATE_HTML          = YES
+GENERATE_TREEVIEW      = YES
+FULL_PATH_NAMES        = NO
+
+# Поиск файлов
+INPUT                  = src
+FILE_PATTERNS          = *.py
+RECURSIVE              = YES
+
+# Документирование
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = NO
+HIDE_UNDOC_MEMBERS     = NO
+HIDE_UNDOC_CLASSES     = NO
+
+# Исходный код
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = NO
+STRIP_CODE_COMMENTS    = YES
+
+# HTML настройки
+HTML_OUTPUT            = html
+HTML_FILE_EXTENSION    = .html
+HTML_COLORSTYLE_HUE    = 220
+HTML_TIMESTAMP         = YES
+
+# Поиск
+SEARCHENGINE           = YES
