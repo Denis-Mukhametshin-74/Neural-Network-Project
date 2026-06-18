@@ -69,7 +69,7 @@ import requests
 import logging
 from typing import Optional, Tuple
 
-# Настройка логирования (как в вашем стиле)
+# Настройка логирования 
 logger = logging.getLogger(__name__)
 
 
