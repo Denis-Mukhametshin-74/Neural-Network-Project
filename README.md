@@ -25,23 +25,23 @@
 weather_heat_calc/
 ├── src/
 │   ├── __init__.py
-│   ├── api_client.py         # Взаимодействие с внешними API
+│   ├── api_client.py         
 │   ├── storage.py            # Работа с JSON-хранилищем локаций
 │   ├── heat_calculator.py    # Расчет килокалорий
-│   └── data_loader.py        # Загрузка/сохранение данных (адаптирован из MNIST)
+│   └── data_loader.py        # Загрузка/сохранение данных 
 ├── tests/
 │   ├── __init__.py
-│   ├── test_api_client.py    # Юнит-тесты для API
-│   ├── test_storage.py       # Юнит-тесты для хранилища
-│   └── test_heat_calculator.py # Юнит-тесты для расчетов
+│   ├── test_api_client.py    
+│   ├── test_storage.py       
+│   └── test_heat_calculator.py 
 ├── data/
 │   └── cities.json           # Хранилище избранных городов
 ├── docs/                     # Doxygen документация
 ├── .github/
 │   └── workflows/
-│       └── ci.yml            # GitHub Actions CI/CD
-├── main.py                   # Точка входа (CLI)
-├── requirements.txt          # Зависимости проекта
+│       └── ci.yml            # GitHub
+├── main.py                   
+├── requirements.txt          
 ├── Doxyfile                  # Конфигурация Doxygen
 └── README.md
 ```
@@ -55,7 +55,7 @@ weather_heat_calc/
 #### User Story 1.1: Обработка ошибок API
 **Ветка:** `feature/team-alpha_error_handling`
 
-**Код для `src/api_client.py`** (в стиле вашего проекта):
+**Код для `src/api_client.py`** :
 
 ```python
 """
@@ -182,7 +182,7 @@ class WeatherService:
 #### User Story 1.2: Тестирование обработки ошибок
 **Ветка:** `feature/team-alpha_tests`
 
-**Код для `tests/test_api_client.py`** (в стиле вашего проекта с простыми тестами):
+**Код для `tests/test_api_client.py`** :
 
 ```python
 """
@@ -281,7 +281,7 @@ class TestWeatherService:
 #### User Story 2.1: Система хранения локаций
 **Ветка:** `feature/team-alpha_storage`
 
-**Код для `src/storage.py`** (в стиле вашего проекта):
+**Код для `src/storage.py`** :
 
 ```python
 """
@@ -438,7 +438,7 @@ class LocationStorage:
 #### User Story 3.1: Модуль расчета килокалорий
 **Ветка:** `feature/team-alpha_heat_calc`
 
-**Код для `src/heat_calculator.py`** (в стиле вашего проекта):
+**Код для `src/heat_calculator.py`**:
 
 ```python
 """
@@ -621,7 +621,7 @@ class HeatCalculator:
 
 ## 🔄 CI/CD Pipeline (Адаптация вашего workflow)
 
-**Файл `.github/workflows/ci.yml`** (полностью в стиле вашего проекта):
+**Файл `.github/workflows/ci.yml`**:
 
 ```yaml
 name: Weather & Heat Calculator CI/CD
@@ -728,7 +728,7 @@ jobs:
 
 ---
 
-## 📝 Пример Pull Request (адаптированный под ваш стиль)
+## 📝 Пример Pull Request
 
 ### Заголовок PR
 ```
@@ -815,7 +815,7 @@ git push origin feature/team-alpha_your_task
 """
 ```
 
-Конфигурация `Doxyfile` остается аналогичной вашему проекту, только меняем `PROJECT_NAME`:
+Конфигурация `Doxyfile`
 
 ```doxy
 PROJECT_NAME           = "Weather & Heat Calculator"
